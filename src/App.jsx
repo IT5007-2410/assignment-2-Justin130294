@@ -22,7 +22,7 @@ const initialTravellers = [
     nationality: "Singaporean",
     emergencyContactName: "Richard",
     emergencyContactPhone: 32823434,
-    remarks: "Nil",
+    remarks: "Handicap",
   },
 ];
 
@@ -30,16 +30,28 @@ function TravellerRow(props) {
   {
     /*Q3. Placeholder to initialize local variable based on traveller prop.*/
   }
+  const { traveller } = props;
+
   return (
     <tr>
       {/*Q3. Placeholder for rendering one row of a table with required traveller attribute values.*/}
+      <td>{traveller.id}</td>
+      <td>{traveller.name}</td>
+      <td>{traveller.phone}</td>
+      <td>{traveller.bookingTime.toLocaleString()}</td>
+      <td>{traveller.bookingReferenceNumber}</td>
+      <td>{traveller.email}</td>
+      <td>{traveller.nationality}</td>
+      <td>{traveller.emergencyContactName}</td>
+      <td>{traveller.emergencyContactPhone}</td>
+      <td>{traveller.remarks}</td>
     </tr>
   );
 }
 
 function Display(props) {
   /*Q3. Write code to render rows of table, reach corresponding to one traveller. Make use of the TravellerRow function that draws one row.*/
-
+  const { travellers } = props;
   return (
     <table className="bordered-table">
       <thead>
@@ -49,10 +61,19 @@ function Display(props) {
           <th>Name</th>
           <th>Phone</th>
           <th>Booking Time</th>
+          <th>Booking Reference Number</th>
+          <th>Email</th>
+          <th>Nationality</th>
+          <th>Emergency Contact Name</th>
+          <th>Emergency Contact Phone</th>
+          <th>Remarks</th>
         </tr>
       </thead>
       <tbody>
         {/*Q3. write code to call the JS variable defined at the top of this function to render table rows.*/}
+        {travellers.map((traveller) => (
+          <TravellerRow key={traveller.id} traveller={traveller} />
+        ))}
       </tbody>
     </table>
   );
@@ -169,7 +190,9 @@ class TicketToRide extends React.Component {
           {/*Q2 and Q6. Code to call Instance that draws Homepage. Homepage shows Visual Representation of free seats.*/}
           {this.state.selector === "homepage" && <Homepage />}
           {/*Q3. Code to call component that Displays Travellers.*/}
-          {this.state.selector === "displayTravellers" && <Display />}
+          {this.state.selector === "displayTravellers" && (
+            <Display travellers={this.state.travellers} />
+          )}
           {/*Q4. Code to call the component that adds a traveller.*/}
           {this.state.selector === "addTraveller" && <Add />}
           {/*Q5. Code to call the component that deletes a traveller based on a given attribute.*/}
