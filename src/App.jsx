@@ -312,18 +312,42 @@ class Delete extends React.Component {
   constructor() {
     super();
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.state = { showErrorMessage: false };
   }
   handleSubmit(e) {
     e.preventDefault();
     /*Q5. Fetch the passenger details from the deletion form and call deleteTraveller()*/
+    const submittedForm = e.target;
+    const bookingReferenceId = submittedForm.bookingReferenceId.value;
+    const traveller = this.props.travellers.find(
+      (traveller) => traveller.bookingReferenceNumber === bookingReferenceId
+    );
+    if (!traveller) {
+      this.setState({ showErrorMessage: true });
+      return;
+    }
+    this.props.deleteTraveller(traveller);
+    submittedForm.reset();
   }
-
   render() {
     return (
       <form name="deleteTraveller" onSubmit={this.handleSubmit}>
         {/*Q5. Placeholder form to enter information on which passenger's ticket needs to be deleted. Below code is just an example.*/}
-        <input type="text" name="travellername" placeholder="Name" />
-        <button>Delete</button>
+        <label htmlFor="deleteBookingReferenceId" className="form-label">
+          Booking Reference Id
+        </label>
+        <input
+          type="text"
+          name="bookingReferenceId"
+          placeholder="Booking Reference Id"
+          id="deleteBookingReferenceId"
+          className="form-control"
+          required
+        />
+        {this.state.showErrorMessage && (
+          <p className="text-danger">Passenger not found</p>
+        )}
+        <button type="submit">Delete</button>
       </form>
     );
   }
@@ -378,7 +402,13 @@ class TicketToRide extends React.Component {
 
   deleteTraveller(passenger) {
     /*Q5. Write code to delete a passenger from the traveller state variable.*/
+    const travellers = this.state.travellers.filter(
+      (traveller) => traveller.id !== passenger.id
+    );
+    this.setState({ travellers });
+    alert("Traveller deleted successfully");
   }
+
   render() {
     return (
       <div>
