@@ -1,0 +1,239 @@
+/* Global reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  font-size: 16;
+  line-height: 1.5;
+}
+
+header {
+  background-color: #ede9fe;
+  height: 6rem;
+  width: 100%;
+  position: fixed;
+  z-index: 2;
+  display: flex;
+  padding: 1rem 1rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+header h1 {
+  margin: auto;
+}
+
+header nav {
+  width: 70%;
+  height: 100%;
+  background-color: #ede9fe;
+}
+
+#header-tabs {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 90%;
+  height: 100%;
+  margin: auto;
+}
+
+nav ul {
+  list-style-type: none;
+  overflow: hidden;
+  display: flex;
+  gap: 3rem;
+  align-items: center;
+  height: 100%;
+}
+
+nav ul li {
+  float: left;
+  width: 10rem;
+  text-align: center;
+  height: 3rem;
+  align-content: center;
+  border-style: solid solid;
+  border-radius: 24px;
+  font-weight: 700;
+  transition: all 0.5s ease;
+  overflow-wrap: break-word;
+}
+
+/* Change the  pointer and background colour when hovering over each display tab*/
+nav ul li:hover {
+  cursor: pointer;
+  background-color: #603df6;
+  color: white;
+}
+
+/* Body */
+
+.content {
+  padding: 10rem 3rem;
+  margin: auto;
+  height: 100%;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 24px;
+}
+
+/* Home page */
+
+#overview {
+  width: 80%;
+  font-size: 20px;
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+}
+
+.train {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.seat-container {
+  margin: 3rem auto;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* 5 equal columns */
+  grid-template-rows: repeat(2, auto); /* 2 rows */
+  gap: 10px; /* Space between the items */
+  border: 2px solid #444451;
+  border-radius: 50px;
+  padding: 20px 40px;
+}
+
+.seat {
+  background-color: #00ff00;
+  height: 50px;
+  width: 50px;
+  margin: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.seat.occupied {
+  background-color: #808080;
+  cursor: not-allowed;
+}
+
+.legend {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.legend h4 {
+  margin: 0;
+}
+
+.legend-symbol {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Travellers table */
+table {
+  border-collapse: collapse;
+  table-layout: auto;
+  width: 100%;
+}
+
+td,
+th {
+  padding: 0.3rem 0.5rem;
+  vertical-align: middle;
+  border: solid black 0.1rem;
+}
+
+thead {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+tbody {
+  font-size: 16px;
+}
+
+/* Add Traveller Form */
+#add-traveller,
+#delete-traveller {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 70%;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+}
+
+input,
+textarea {
+  padding-left: 0.3rem;
+  /* Override the default fonts for the input and select elements */
+  font: inherit;
+}
+
+form div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.required-field,
+.error-text {
+  color: red;
+}
+
+/* Delete passenger */
+.fetched-details {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 70%;
+}
+
+/* Button */
+
+/* CSS */
+button {
+  border: 2px solid #black;
+  border-radius: 15px;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: normal;
+  margin: 0;
+  outline: none;
+  padding: 10px 5px;
+  text-align: center;
+  width: 100%;
+  will-change: transform;
+}
+
+button:hover {
+  color: white;
+  background-color: black;
+}
