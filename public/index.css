@@ -160,15 +160,11 @@ th {
   padding: 0.3rem 0.5rem;
   vertical-align: middle;
   border: solid black 0.1rem;
+  overflow: wrap;
 }
 
 thead {
-  font-size: 20px;
   font-weight: bold;
-}
-
-tbody {
-  font-size: 16px;
 }
 
 /* Add Traveller Form */
